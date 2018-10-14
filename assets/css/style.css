@@ -1,0 +1,36 @@
+body{
+     background-color: black;
+     color: #ccc;
+    }
+
+#header{
+     height: 40%;   
+     width: 80%;
+     margin: auto;
+}
+
+#pic1{
+  margin:auto;
+  width: 100%;
+}
+
+.text{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: larger;
+}
+
+#user-text{
+  border-style: dotted;
+  border-width: 3px;
+  border-color: antiquewhite;
+  padding: 10px 20px;
+  width: 60%;
+}
+
+
+
+
+

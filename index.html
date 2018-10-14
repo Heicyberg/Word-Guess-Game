@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>word guess game
+  </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script scr="assets/javascript/game.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+   <div id="header">
+      <img src="assets/images/WG.jpg" id="pic1" alt="header Picture">
+   </div>
+  <div class="text">
+    <h2>press any key to get started</h2>
+    <h3>wins : <span id="num-W"></span> </h3>
+    <h3>current word</h3>
+    <h3><span id="user-text"></span></h3>
+    <h3>Number of guess remaining : <span id="guessRemain-text"></span></h3>
+    <h3>Letters already guessed : <span id="leterGussed-text"></span></h3>
+  </div>
+
+<script>
+
+      var numWin = 0; 
+      var List = ["lion","hose","dog","cat","goat"]
+      var textCtent = document.getElementById("user-text")
+      var textW = document.getElementById("num-W")
+      var guessRemain = document.getElementById("guessRemain-text")
+      var letterGuessed = document.getElementById("leterGussed-text")
+      var mask = '';
+      textW.textContent = numWin;
+      var l = 0;
+      var wd = List[l];
+      var stra=[];
+      var order = [];
+      var letterGuessedHolder = [];
+      var numRemain = wd.length+5;
+      guessRemain.textContent = numRemain;
+      
+      for(i=0;i<wd.length;i++){
+           stra[i]=wd.charAt(i);
+           mask=mask+' _ ';
+        }
+        textCtent.textContent=mask;
+      console.log(stra);
+
+    // This function is run whenever the user presses a key.
+
+          
+           
+      
+        document.onkeyup = reveal;
+            function reveal(event) {  
+                  var letterInput = event.key;
+                  var temp = '';
+
+                 for(i=0;i<stra.length;i++){
+                   if(letterInput == stra[i]){
+                        order.push(i);
+                    }
+                   if(order.includes(i)){
+                       temp = temp+' '+stra[i]+' ';
+                    }
+                   else{
+                      temp = temp+' _ ';
+                    }
+                    mask = temp;  
+                    console.log(mask)
+                  } 
+
+                  textCtent.textContent = mask;
+                 
+                 
+
+                  if(letterGuessedHolder.includes(letterInput)==false){
+                     letterGuessedHolder.push(letterInput);
+                     numRemain = numRemain-1;
+                   }
+
+                  guessRemain.textContent = numRemain;
+                  letterGuessed.textContent=letterGuessedHolder;
+
+                  if(numRemain==0){
+                    l=l+1;
+                    wd = List[l];
+                    mask='';
+                    letterGuessedHolder=['',];
+                    stra=[];
+                    order = [];
+                    numRemain = wd.length+5;
+
+                    for(i=0;i<wd.length;i++){
+                       stra[i]=wd.charAt(i);
+                       mask=mask+' _ ';
+                     }
+
+                    textCtent.textContent = mask;
+                    guessRemain.textContent = numRemain;
+                    letterGuessed.textContent=letterGuessedHolder;
+                  }
+                  
+                  if (order.length==wd.length){
+                    numWin=numWin+1;
+                    textW.textContent = numWin;
+                    l=l+1;
+                    wd = List[l];
+                    mask='';
+                    letterGuessedHolder=['',];
+                    stra=[];
+                    order = [];
+
+                    for(i=0;i<wd.length;i++){
+                       stra[i]=wd.charAt(i);
+                       mask=mask+' _ ';
+                     }
+
+                    textCtent.textContent = mask;
+            
+                  }  
+                }
+                
+                                
+ 
+
+</script>
+
+</body>
+
+</html>
